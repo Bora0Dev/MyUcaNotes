@@ -53,18 +53,13 @@ I found their implementation and choice great for the context of their narrative
 
 ## Implementation
 
-[Uploadin<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Bibliography</title>
-</head>
+<html>
 <body>
-<div class="csl-bib-body" style="line-height: 1.35; ">
-  <div class="csl-entry"><i>Anti Aliasing methods Unreal Engine test</i> (2024) At: <a href="https://www.youtube.com/watch?v=NbYD3lNKyrQ">https://www.youtube.com/watch?v=NbYD3lNKyrQ</a> (Accessed  10/10/2024).</div>
-  <span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=videoRecording&amp;rft.title=Anti%20Aliasing%20methods%20Unreal%20Engine%20test&amp;rft.identifier=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DNbYD3lNKyrQ&amp;rft.au=undefined&amp;rft.date=2024-10-10"></span>
-</div></body>
+
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/NbYD3lNKyrQ" title="Anti Aliasing methods Unreal Engine test" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</body>
 </html>
+
 g UE5UndeadSamurai.html…]()
 
 
