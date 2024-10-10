@@ -55,57 +55,29 @@ I found their implementation and choice great for the context of their narrative
 
 
 
-After testing both TAA and TSR in my Undead Samurai game, I ultimately decided to use TAA over TSR. While TSR delivered superior visual quality, the performance trade-off was simply not worth it. Implementing TSR resulted in a significant frame rate drop of 30 FPS, which negatively impacted the gameplay experience, especially during action-heavy sequences. Although TAA doesn't offer quite the same level of sharpness as TSR, it still provides a strong balance between visual fidelity and performance, maintaining smoother gameplay while delivering good image quality. Given the fast-paced nature of Undead Samurai, ensuring consistent frame rates is critical, and TAA allowed me to achieve that without compromising too much on visuals.
 
-<br>
-
-```csharp
-using UnityEngine;
-public class HelloWorld : MonoBehaviour 
-{
-    public void Start() 
-    {
-        Debug.Log("Hello World!");
-    }
-}
-```
 *Figure 1. An example of using a script as a figure. This script has a `Start()` method!*
 
 ### What creative or technical approaches did you use or try, and how did this contribute to the outcome?
 
-- Did you try any new software or approaches? How did the effect development?
 
-<br>
 
-![onhover image description](https://beforesandafters.com/wp-content/uploads/2021/05/Welcome-to-Unreal-Engine-5-Early-Access-11-16-screenshot.png)
-*Figure 2. An example of an image as a figure. This image shows where to package your Unreal project!.*
 
-### Did you have any technical difficulties? If so, what were they and did you manage to overcome them?
-
-- Did you have any issues completing the task? How did you overcome them?
 
 ## Outcome
+After testing both TAA and TSR in my Undead Samurai game, I ultimately decided to use TAA over TSR. While TSR delivered superior visual quality, the performance trade-off was simply not worth it. Implementing TSR resulted in a significant frame rate drop of 30 FPS, which negatively impacted the gameplay experience, especially during action-heavy sequences. Although TAA doesn't offer quite the same level of sharpness as TSR, it still provides a strong balance between visual fidelity and performance, maintaining smoother gameplay while delivering good image quality. Given the fast-paced nature of Undead Samurai, ensuring consistent frame rates is critical, and TAA allowed me to achieve that without compromising too much on visuals.
 
-Here you can put links required for delivery of the task, ensure they are properly labelled appropriately and the links function. The required components can vary between tasks, you can find a definative list in the Assessment Information. Images and code snippets can be embedded and annotated if appropriate.
 
-- [Example Video Link](https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley)
-- [Example Repo Link](https://github.com/githubtraining/hellogitworld)
-- [Example Build Link](https://samperson.itch.io/desktop-goose)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=C4v0qHaYuEISAC01" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-*Figure 3. An example of an embedded video using a HTML code snippet.*
-
-<iframe frameborder="0" src="https://itch.io/embed/2374819" width="552" height="167"><a href="https://bitboyb.itch.io/nephilim-resurrection">Nephilim Resurrection (BETA) by bitboyb</a></iframe>
-
-*Figure 4. An example of a itch.io widget*
 
 ## Critical Reflection
+After testing TAA and TSR in Undead Samurai, I chose TAA due to performance concerns. While TSR produced sharper visuals, it resulted in a 30 FPS drop, which significantly affected gameplay, especially in fast-paced combat sequences. Although TAA isn’t as visually crisp, it provided a much better balance between image quality and performance, maintaining a smooth and responsive experience.
+
+This process taught me that, while visual fidelity is important, performance takes priority in action-heavy games like Undead Samurai. A slight reduction in graphical quality is an acceptable trade-off if it ensures consistent gameplay, and TAA offered that balance. Going forward, I will continue optimizing for both visuals and performance, but my priority will always be the player experience.
 
 ### What did or did not work well and why?
+During testing, FXAA (Fast Approximate Anti-Aliasing) didn’t perform well for Undead Samurai. While it is lightweight and didn’t impact performance much, the image quality suffered. FXAA tended to blur fine details, especially in the game’s complex textures and dark environments, leading to a less crisp and polished look. The lack of clarity was especially noticeable during fast-paced combat, where sharp visuals are essential to maintaining immersion and focus.
 
-- What did not work well? What parts of the assignment that you felt did not fit the brief or ended up being lacklustre.
-- What did you think went very well? Were there any specific aspects you thought were very good?
+In contrast, TAA (Temporal Anti-Aliasing) worked much better. It effectively reduced jagged edges and maintained better image sharpness compared to FXAA, while still balancing performance. While TAA can sometimes introduce blurring or ghosting in fast-moving scenes, these issues were minimal after fine-tuning its settings. This made TAA the superior choice, providing a smoother and visually pleasing experience without significantly affecting the game's performance.
 
 ### What would you do differently next time?
 
@@ -115,26 +87,20 @@ Here you can put links required for delivery of the task, ensure they are proper
 ## Bibliography
 
 Temporal Super Resolution in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/temporal-super-resolution-in-unreal-engine (Accessed 10/10/2024).
+Gameinspired (2021) UE4 — TemporalAA vs FXAA. At: https://gameinspired-mail.medium.com/ue4-temporalaa-vs-fxaa-4ae71d3e89b6 (Accessed  10/10/2024).
+Anti Aliasing and Upscaling in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/anti-aliasing-and-upscaling-in-unreal-engine (Accessed  10/10/2024).
+ChatGPT (s.d.) At: https://chatgpt.com (Accessed  10/10/2024).
+
 
 ## Declared Assets
-[Uplo
-ading MedievaCityBib.html…]()
+
 Modular Asian Medieval City in Environments - UE Marketplace (s.d.) At: https://www.unrealengine.com/marketplace/en-US/product/modular-asian-medieval-city (Accessed 10/10/2024).
+Mixamo (s.d.) At: https://www.mixamo.com/#/ (Accessed  10/10/2024).
 
 
----
 
-```Markdown
-# General Tips
-
-- Use plenty of images and videos to demonstrate your point. You can embed YouTube tutorials, your own recordings, etc.
-- Always reference! Even documentation, tutorials and anything you used for your assignment. Use an inline reference for the sentence and a bibliography reference at the end.
-- Word count is not important, you can also chose to use bullet points. As long as it is clear and readable, the format your decide to use can be flexible.
-- You are free to use AI but please ensure you have made a note in the declared assets, for example if you have a script called Test.cs , you should note that AI was used to in the creation of this script. You can use a bullet point list for each asset used like:
 
 The following assets were created or modified with the use of GPT 4o:
-- Test.cs
-- AnotherScript.cs
 - Development Journal.html
 
-```
+
