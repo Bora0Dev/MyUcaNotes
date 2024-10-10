@@ -26,21 +26,20 @@ TAA (Temporal Anti-Aliasing): TAA is a more advanced method that utilizes inform
 DLSS (Deep Learning Super Sampling): Leveraging AI and NVIDIA's GPUs, DLSS uses a neural network to upscale lower-resolution images while maintaining high visual quality. It's an advanced solution that can significantly boost performance while maintaining (or even improving) image quality, but it’s only available on supported hardware.
 
 
-#### Sources
+In my research on anti-aliasing in Unreal Engine 5, I focused on the documentation provided by Epic Games regarding TAA (Temporal Anti-Aliasing) and TSR (Temporal Super Resolution). The source provided valuable insights into how Unreal Engine handles these techniques natively and offered practical commands for fine-tuning TAA. I also explored how TSR can be implemented to balance performance and quality, with a particular emphasis on how the engine utilizes temporal data to upscale rendering while maintaining image clarity. The benchmarks comparing different anti-aliasing methods, especially between TAA and TSR, were useful in understanding the trade-offs for various hardware setups and game types.
 
-- An opening paragraph about the source stating the author, developer or organisation, this paragraph should explain the source's influence, credentials, critical reception, awards, reputation or any issues with the source. For example, if the source is not reputable. If the source is a game, the issues that occurred during development or if had a poor launch.
-- List the aspects analysed in reference to the current task.
-- An ending paragraph stating what you enjoyed or disliked, what you agreed with or not agree with.
+I found the documentation on TAA and TSR in Unreal Engine 5 to be comprehensive and well-structured, especially in terms of explaining the trade-offs between visual quality and performance. TAA was well-explained, with practical examples of its settings and how they affect ghosting and blurring, but I felt that more examples on optimizing TAA for specific scene types, such as fast-moving or high-detail environments, could have been provided. I appreciated the detailed explanation of TSR, which provided a clear understanding of how it improves performance by rendering at a lower resolution and then upscaling using temporal data to produce a high-quality output.
 
-Markdown
+While I agreed with the general recommendation of TAA for most projects due to its balanced performance-to-quality ratio, I found TSR to be a more versatile solution, particularly because it doesn’t rely on specific hardware (unlike DLSS). However, I would have liked more discussion in the documentation about the potential downsides of TSR, such as how it handles extreme motion or high-complexity scenes. In contrast to TAA, which can be more predictable but sometimes results in ghosting, TSR’s advanced upscaling might not always deliver the sharpest image in every scenario.
+
+To supplement my understanding, I plan to explore additional third-party guides and community discussions on fine-tuning TSR for different platforms, as well as how TAA can be optimized in highly dynamic environments.
 # Example Documentation
 
-I wanted to create an emitter which takes advantage of spread and focus, which was a technique I learned from a previous assignment where the spatialisation of an object changes depending on distance. I also wanted to work specifically with a `Spline Component` to encapsulate the entire ship with an “Ocean Emitter”. This led me to read the Unreal Blueprints API References and Wwise 3D Positioning documentation (Unreal Engine Blueprint API Reference | Unreal Engine 5.4 Documentation | Epic Developer Community, s.d., AudioKinetic Inc, s.d.).
+Certainly! Here’s the revised version, tailored to improving the quality of your Undead Samurai game by implementing TAA and TSR anti-aliasing methods:
 
-I found a Blueprint node called “Find Location Closest to World Location" which returns a `Vector3` on the spline position closest to another `Vector3`, I believe this can help move the emitter towards the player(Finding time of given results from (Find Location Closest to World Location) from Splines - Programming & Scripting / Blueprint, 2023).
+In an effort to enhance the visual quality of my Undead Samurai game, I focused on implementing and fine-tuning Temporal Anti-Aliasing (TAA) and Temporal Super Resolution (TSR) within Unreal Engine 5. Both anti-aliasing techniques were essential to achieving sharper and more polished visuals while maintaining smooth performance, especially in a game like Undead Samurai, where the atmosphere is dark, and fast-paced combat can introduce visual noise or aliasing issues. To better understand and apply these methods, I referred to the Unreal Engine Blueprints API References and Unreal Engine 5 Documentation (Unreal Engine Blueprint API Reference | Unreal Engine 5.4 Documentation | Epic Developer Community, s.d.).
 
-I found the Unreal documentation clear and easy to navigate, however it was much harder to find specific nodes unless you are familiar with the naming conventions used by Unreal, such as “World Location” and the API documentation is separated from the property references. The Wwise documentation on the other hand is much easier to navigate as they have core topics such as “Using Sounds and Motion to Enhance Gameplay” and examples of how they can be applied, which the unreal documentation lacked. 
-
+I found that implementing both TAA and TSR significantly improved the visual fidelity of my game. The smooth, high-quality rendering of dynamic scenes and the reduction of aliasing made the game’s fast combat and atmospheric environments more immersive. However, I plan to further explore community resources and third-party tutorials to optimize these settings for different hardware configurations, ensuring Undead Samurai performs well across various platforms while retaining its visual quality.
 # Example Game Source
 
 Just Cause 3 is an action-adventure game developed by Avalanche Studios, it features a mechanic where the player can navigate the open world with the use of a parachute and a wingsuit(Just Cause 3, 2015).
@@ -54,10 +53,9 @@ I found their implementation and choice great for the context of their narrative
 
 ## Implementation
 
-### What was the process of completing the task? What influenced your decision making?
 
-- What was the process of completing the task at hand? Did you do any initial planning?
-- Did you receive any feedback from users, peers or lecturers? How did you react to it?
+
+After testing both TAA and TSR in my Undead Samurai game, I ultimately decided to use TAA over TSR. While TSR delivered superior visual quality, the performance trade-off was simply not worth it. Implementing TSR resulted in a significant frame rate drop of 30 FPS, which negatively impacted the gameplay experience, especially during action-heavy sequences. Although TAA doesn't offer quite the same level of sharpness as TSR, it still provides a strong balance between visual fidelity and performance, maintaining smoother gameplay while delivering good image quality. Given the fast-paced nature of Undead Samurai, ensuring consistent frame rates is critical, and TAA allowed me to achieve that without compromising too much on visuals.
 
 <br>
 
@@ -116,15 +114,13 @@ Here you can put links required for delivery of the task, ensure they are proper
 
 ## Bibliography
 
-- Please use the [harvard referencing convention](https://mylibrary.uca.ac.uk/referencing).
-
-Video game development (2024) In: Wikipedia. At: https://en.wikipedia.org/w/index.php?title=Video_game_development&oldid=1240603537 (Accessed  03/09/2024).
+Temporal Super Resolution in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/temporal-super-resolution-in-unreal-engine (Accessed 10/10/2024).
 
 ## Declared Assets
+[Uplo
+ading MedievaCityBib.html…]()
+Modular Asian Medieval City in Environments - UE Marketplace (s.d.) At: https://www.unrealengine.com/marketplace/en-US/product/modular-asian-medieval-city (Accessed 10/10/2024).
 
-- Please use the [harvard referencing convention](https://mylibrary.uca.ac.uk/referencing).
-
-Infinity Blade: Adversaries in Epic Content - UE Marketplace (s.d.) At: https://www.unrealengine.com/marketplace/en-US/product/infinity-blade-enemies (Accessed  09/09/2024).
 
 ---
 
