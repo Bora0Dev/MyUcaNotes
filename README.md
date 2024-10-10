@@ -12,9 +12,18 @@ Bora Tibet Ozdemir
 
 
 
-As I have done research regarding the audio identity and developing audio assets for this project in previous formative assignments. I wanted to look into specific Unreal and Wwise systems that will help create a more immersive experience. I wanted to focus on official documentation to improve my ability to learn new techniques without explicit instructions.
+In modern game development, anti-aliasing (AA) plays a crucial role in improving visual quality by smoothing out jagged edges (aliasing) that appear on rendered objects. However, different anti-aliasing techniques come with their own trade-offs between visual fidelity and performance. My research focused on various anti-aliasing methods, how they impact performance and quality, and their optimal implementation in Unreal Engine 5 (UE5).
 
-I also wanted a creative source to help develop the parachute audio assets and learn how it should function within the game’s narrative.
+1. Overview of Anti-Aliasing Methods
+There are several prominent anti-aliasing techniques used in real-time rendering, each offering a different balance between image quality and computational cost:
+
+MSAA (Multisample Anti-Aliasing): One of the oldest methods, MSAA samples multiple points within each pixel to smooth out edges. While it offers decent quality, it tends to be computationally expensive, especially in deferred rendering environments like UE5.
+
+FXAA (Fast Approximate Anti-Aliasing): FXAA is a post-processing technique that blurs jagged edges by analyzing contrast in the image. It's extremely fast and light on performance but can lead to a soft, less detailed final image, particularly in high-contrast scenes.
+
+TAA (Temporal Anti-Aliasing): TAA is a more advanced method that utilizes information from multiple frames over time to reduce aliasing. While it provides better results than FXAA, it can introduce motion blur or ghosting artifacts if not properly calibrated. In UE5, TAA is one of the most widely used AA methods due to its balance between quality and performance.
+
+DLSS (Deep Learning Super Sampling): Leveraging AI and NVIDIA's GPUs, DLSS uses a neural network to upscale lower-resolution images while maintaining high visual quality. It's an advanced solution that can significantly boost performance while maintaining (or even improving) image quality, but it’s only available on supported hardware.
 
 
 #### Sources
@@ -23,7 +32,7 @@ I also wanted a creative source to help develop the parachute audio assets and l
 - List the aspects analysed in reference to the current task.
 - An ending paragraph stating what you enjoyed or disliked, what you agreed with or not agree with.
 
-```Markdown
+Markdown
 # Example Documentation
 
 I wanted to create an emitter which takes advantage of spread and focus, which was a technique I learned from a previous assignment where the spatialisation of an object changes depending on distance. I also wanted to work specifically with a `Spline Component` to encapsulate the entire ship with an “Ocean Emitter”. This led me to read the Unreal Blueprints API References and Wwise 3D Positioning documentation (Unreal Engine Blueprint API Reference | Unreal Engine 5.4 Documentation | Epic Developer Community, s.d., AudioKinetic Inc, s.d.).
@@ -41,7 +50,7 @@ The wind becomes more prominent in the mix and its volume and speed is based on 
 I found their implementation and choice great for the context of their narrative and game mechanics. However, for the sequences featured in the assignment, it is more “cinematic” allowing for a different approach for the mix and can be “exaggerated” to drive its narrative function.
 
 
-```
+
 
 ## Implementation
 
