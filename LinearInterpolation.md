@@ -1,4 +1,4 @@
-# [Anti-Aliasing]
+# [Linear Interpolation]
 
 
 
