@@ -41,13 +41,11 @@ In an effort to enhance the visual quality of my Undead Samurai game, I focused 
 
 I found that implementing both TAA and TSR significantly improved the visual fidelity of my game. The smooth, high-quality rendering of dynamic scenes and the reduction of aliasing made the game’s fast combat and atmospheric environments more immersive. However, I plan to further explore community resources and third-party tutorials to optimize these settings for different hardware configurations, ensuring Undead Samurai performs well across various platforms while retaining its visual quality.
 # Example Game Source
+An excellent example of a game that offers flexibility in anti-aliasing settings is The Witcher 3: Wild Hunt. Developed by CD Projekt Red, the game is critically acclaimed for its vast open world and stunning visuals, which are enhanced through the use of various anti-aliasing techniques. Players are given the option to choose between methods like TAA and FXAA, allowing them to tailor the visual quality and performance based on their hardware and preferences.(The Witcher 3: Wild Hunt, 2015)
 
-Just Cause 3 is an action-adventure game developed by Avalanche Studios, it features a mechanic where the player can navigate the open world with the use of a parachute and a wingsuit(Just Cause 3, 2015).
+FXAA in The Witcher 3 provides minimal performance impact, making it suitable for lower-end systems, but at the cost of some visual clarity. The technique can cause noticeable blurring of fine textures and details, particularly in highly detailed environments like forests or cities. On the other hand, TAA offers better image quality by significantly reducing jagged edges and maintaining sharper visuals, which is particularly beneficial in the game’s richly detailed landscapes and complex character models. However, like in many games, TAA can introduce some degree of blurring or ghosting in motion-heavy scenes.
 
-The wind becomes more prominent in the mix and its volume and speed is based on the player's velocity when using the wingsuit or parachute. It is not too overwhelming during action sequences to ensure audio responses can be clearly heard.
-
-I found their implementation and choice great for the context of their narrative and game mechanics. However, for the sequences featured in the assignment, it is more “cinematic” allowing for a different approach for the mix and can be “exaggerated” to drive its narrative function.
-
+Through these settings, The Witcher 3 allows players to strike a balance between performance and visual fidelity. By comparing the anti-aliasing methods in this game, I found that TAA offered the best balance for maintaining the immersive, high-quality visuals of the game without a significant drop in performance—much like my experience with Undead Samurai. This comparison highlights how crucial it is to have the option to adjust anti-aliasing settings to meet both the aesthetic and performance needs of a game.
 
 
 
@@ -97,6 +95,8 @@ In contrast, TAA (Temporal Anti-Aliasing) worked much better. It effectively red
 Temporal Super Resolution in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/temporal-super-resolution-in-unreal-engine (Accessed 10/10/2024).
 Gameinspired (2021) UE4 — TemporalAA vs FXAA. At: https://gameinspired-mail.medium.com/ue4-temporalaa-vs-fxaa-4ae71d3e89b6 (Accessed  10/10/2024).
 Anti Aliasing and Upscaling in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/anti-aliasing-and-upscaling-in-unreal-engine (Accessed  10/10/2024).
+The Witcher 3: Wild Hunt Next-gen Performance Analysis - Acceptable Qualities (2023) At: https://www.overclockersclub.com/reviews/witcher_3_ng_performance/2.htm (Accessed  20/10/2024).
+
 ChatGPT (s.d.) At: https://chatgpt.com (Accessed  10/10/2024).
 
 
