@@ -36,18 +36,7 @@ I found that implementing both TAA and TSR significantly improved the visual fid
 
 ## Implementation
 
-<html>
-<body>
 
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/NbYD3lNKyrQ" title="Anti Aliasing methods Unreal Engine test" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</body>
-</html>
-
-g UE5UndeadSamurai.html…]()
-
-
-
-*Figure 1. An example of using a script as a figure. This script has a `Start()` method!*
 
 ### What creative or technical approaches did you use or try, and how did this contribute to the outcome?
 
