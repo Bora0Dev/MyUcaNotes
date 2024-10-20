@@ -62,7 +62,7 @@ g UE5UndeadSamurai.html…]()
 
 
 
-*Figure 1. An example of using a script as a figure. This script has a `Start()` method!*
+
 
 ### What creative or technical approaches did you use or try, and how did this contribute to the outcome?
 
