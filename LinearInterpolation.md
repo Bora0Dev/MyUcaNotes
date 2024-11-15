@@ -43,6 +43,7 @@ I found that implementing both TAA and TSR significantly improved the visual fid
 
 I used the Sine node in Unreal Engine to create a dynamic and visually engaging material that smoothly transitions between two textures. By feeding the output of the Sine node into the Lerp node’s alpha input, I was able to create a rhythmic, oscillating effect between the two textures. The sine wave naturally fluctuates between values, which made the blending feel fluid and organic, creating a pulsing effect that was both eye-catching and responsive to in-game conditions.
 
+<iframe src="https://blueprintue.com/render/db569jl6/" scrolling="no" allowfullscreen></iframe>
 
 
 ## Outcome
