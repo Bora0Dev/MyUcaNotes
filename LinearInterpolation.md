@@ -68,7 +68,9 @@ On the positive side, the process deepened my understanding of Unreal Engine’s
 ## Bibliography
 
 Linear Interpolate or Lerp Node EXPLAINED! Unreal Engine Materials (2024) At: https://www.youtube.com/watch?v=tBib8qQxd1M (Accessed  20/10/2024).
-"
+-
+
 
 Sine, Append, Abs & Lerp (2017) At: https://jesshiderue4.wordpress.com/material-basics/sine-append-abs-and-lerp/ (Accessed  20/10/2024).
+-
 
