@@ -93,9 +93,13 @@ In contrast, TAA (Temporal Anti-Aliasing) worked much better. It effectively red
 ## Bibliography
 
 Temporal Super Resolution in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/temporal-super-resolution-in-unreal-engine (Accessed 10/10/2024).
+-
 Gameinspired (2021) UE4 — TemporalAA vs FXAA. At: https://gameinspired-mail.medium.com/ue4-temporalaa-vs-fxaa-4ae71d3e89b6 (Accessed  10/10/2024).
+-
 Anti Aliasing and Upscaling in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/anti-aliasing-and-upscaling-in-unreal-engine (Accessed  10/10/2024).
+-
 The Witcher 3: Wild Hunt Next-gen Performance Analysis - Acceptable Qualities (2023) At: https://www.overclockersclub.com/reviews/witcher_3_ng_performance/2.htm (Accessed  20/10/2024).
+-
 
 ChatGPT (s.d.) At: https://chatgpt.com (Accessed  10/10/2024).
 
