@@ -45,6 +45,8 @@ I used the Sine node in Unreal Engine to create a dynamic and visually engaging 
 
 <iframe src="https://blueprintue.com/render/db569jl6/" scrolling="no" allowfullscreen></iframe>
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XCaNEkDLiag?si=Es82W5f-fqlevLLD&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ## Outcome
 The outcome of using the Sine node in combination with the Lerp node to blend two textures was a dynamic and visually captivating material that added depth to the game’s visuals. The smooth oscillation created by the sine wave allowed for a continuous and rhythmic transition between textures, giving the material a "living" quality. This effect enhanced the overall aesthetic by drawing attention to certain elements, making them stand out more effectively.
