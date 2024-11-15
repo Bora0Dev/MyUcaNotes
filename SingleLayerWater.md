@@ -61,8 +61,10 @@ Transparency
 Controlled opacity based on camera distance, providing a seamless blend with the surrounding environment.
 
 <iframe src="https://blueprintue.com/render/mgjrds62/" scrolling="no" allowfullscreen></iframe>
+-
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cBWJ7vyFdfs?si=WQedrNzsz_B3kdcV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+-
 
 
 
