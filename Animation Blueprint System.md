@@ -42,7 +42,12 @@ Unreal Engine's Animation Blueprint system supports isolating and controlling pa
 
 
 ## Implementation
+<iframe src="https://blueprintue.com/render/jy1f5jgt/" scrolling="no" allowfullscreen></iframe>
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LDDlnmb10Pw?si=SSdtkog6YEnw-2aY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+##
 Creative and Technical Approaches
 To implement the character animations, I followed a structured workflow using Unreal Engine 5’s Animation Blueprint system:
 
