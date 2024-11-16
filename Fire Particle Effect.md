@@ -123,7 +123,7 @@ Creating Visual Effects in Niagara for Unreal Engine | Unreal Engine 5.5 Documen
 Fire Simulation FX in Unreal Engine Niagara | in 12 minutes (2023) At: https://www.youtube.com/watch?v=q8avHL7syC4 (Accessed  16/11/2024).
 -
 What is Niagara (2022) At: https://cghero.com/glossary/what-is-niagara (Accessed  16/11/2024).
-=
+-
 
 
 
