@@ -72,6 +72,10 @@ Curl Noise Force:
 Added a curl noise force to create irregular, swirling motion, enhancing the organic, chaotic nature of fire.
 5. Material Integration
 Finally, I applied the M_FireUV material from the UE5 Starter Content as the particle sprite texture. This material, designed for fire effects, added fine details such as flickering patterns and gradients, greatly enhancing the overall realism of the fireball.
+#
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qFvSdweBHEI?si=vDvfVKmmvoLCPblj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#
+
 
 ## Outcome
 The final fireball particle system featured dynamic motion, lifelike color transitions, and responsive scaling that effectively simulated a flaming projectile.
