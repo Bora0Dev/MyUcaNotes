@@ -8,98 +8,136 @@ Bora Tibet Ozdemir
 
 ## Research
 
+Animation systems are an essential part of game development, allowing characters to move fluidly and respond dynamically to player input. Unreal Engine 5's Animation Blueprint system offers a robust framework to manage animations, blend them seamlessly, and achieve complex character movement with precision. For this project, I used the Animation Blueprint system to create and integrate a character's idle, walk, and run animations, while also introducing a slot system for montage playback and independent skeletal part movement.
+
+Resources Consulted
+Video Tutorial
+
+How To Make An Animation Blueprint In Unreal Engine 5 | How To Animate A Character - UE5 Tutorial (2022)
+YouTube Video (Accessed 15/11/2024).
+This comprehensive tutorial provided a step-by-step guide to setting up an Animation Blueprint. It covered creating and configuring a BlendSpace, working with skeletal meshes, and connecting animations to gameplay events. The practical demonstrations offered clarity and insights into real-world implementation.
+Epic Games Documentation
+
+Animation Blueprints in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community
+Epic Games Documentation (Accessed 15/11/2024).
+This official documentation outlined the technical capabilities of Animation Blueprints in Unreal Engine 5. It detailed concepts such as state machines, BlendSpaces, and montage systems, providing a strong theoretical foundation for managing character animations.
 
 
 
 
-In modern game development, anti-aliasing (AA) plays a crucial role in improving visual quality by smoothing out jagged edges (aliasing) that appear on rendered objects. However, different anti-aliasing techniques come with their own trade-offs between visual fidelity and performance. My research focused on various anti-aliasing methods, how they impact performance and quality, and their optimal implementation in Unreal Engine 5 (UE5).
-
-1. Overview of Anti-Aliasing Methods
-There are several prominent anti-aliasing techniques used in real-time rendering, each offering a different balance between image quality and computational cost:
-
-MSAA (Multisample Anti-Aliasing): One of the oldest methods, MSAA samples multiple points within each pixel to smooth out edges. While it offers decent quality, it tends to be computationally expensive, especially in deferred rendering environments like UE5.
-
-FXAA (Fast Approximate Anti-Aliasing): FXAA is a post-processing technique that blurs jagged edges by analyzing contrast in the image. It's extremely fast and light on performance but can lead to a soft, less detailed final image, particularly in high-contrast scenes.
-
-TAA (Temporal Anti-Aliasing): TAA is a more advanced method that utilizes information from multiple frames over time to reduce aliasing. While it provides better results than FXAA, it can introduce motion blur or ghosting artifacts if not properly calibrated. In UE5, TAA is one of the most widely used AA methods due to its balance between quality and performance.
-
-DLSS (Deep Learning Super Sampling): Leveraging AI and NVIDIA's GPUs, DLSS uses a neural network to upscale lower-resolution images while maintaining high visual quality. It's an advanced solution that can significantly boost performance while maintaining (or even improving) image quality, but it’s only available on supported hardware.
-
-
-In my research on anti-aliasing in Unreal Engine 5, I focused on the documentation provided by Epic Games regarding TAA (Temporal Anti-Aliasing) and TSR (Temporal Super Resolution). The source provided valuable insights into how Unreal Engine handles these techniques natively and offered practical commands for fine-tuning TAA. I also explored how TSR can be implemented to balance performance and quality, with a particular emphasis on how the engine utilizes temporal data to upscale rendering while maintaining image clarity. The benchmarks comparing different anti-aliasing methods, especially between TAA and TSR, were useful in understanding the trade-offs for various hardware setups and game types.
-
-I found the documentation on TAA and TSR in Unreal Engine 5 to be comprehensive and well-structured, especially in terms of explaining the trade-offs between visual quality and performance. TAA was well-explained, with practical examples of its settings and how they affect ghosting and blurring, but I felt that more examples on optimizing TAA for specific scene types, such as fast-moving or high-detail environments, could have been provided. I appreciated the detailed explanation of TSR, which provided a clear understanding of how it improves performance by rendering at a lower resolution and then upscaling using temporal data to produce a high-quality output.
-
-While I agreed with the general recommendation of TAA for most projects due to its balanced performance-to-quality ratio, I found TSR to be a more versatile solution, particularly because it doesn’t rely on specific hardware (unlike DLSS). However, I would have liked more discussion in the documentation about the potential downsides of TSR, such as how it handles extreme motion or high-complexity scenes. In contrast to TAA, which can be more predictable but sometimes results in ghosting, TSR’s advanced upscaling might not always deliver the sharpest image in every scenario.
-
-To supplement my understanding, I plan to explore additional third-party guides and community discussions on fine-tuning TSR for different platforms, as well as how TAA can be optimized in highly dynamic environments.
 # Example Documentation
 
-Certainly! Here’s the revised version, tailored to improving the quality of your Undead Samurai game by implementing TAA and TSR anti-aliasing methods:
 
-In an effort to enhance the visual quality of my Undead Samurai game, I focused on implementing and fine-tuning Temporal Anti-Aliasing (TAA) and Temporal Super Resolution (TSR) within Unreal Engine 5. Both anti-aliasing techniques were essential to achieving sharper and more polished visuals while maintaining smooth performance, especially in a game like Undead Samurai, where the atmosphere is dark, and fast-paced combat can introduce visual noise or aliasing issues. To better understand and apply these methods, I referred to the Unreal Engine Blueprints API References and Unreal Engine 5 Documentation (Unreal Engine Blueprint API Reference | Unreal Engine 5.4 Documentation | Epic Developer Community, s.d.).
+Animation Blueprints (ABPs) in Unreal Engine 5 enable developers to control animations programmatically, offering flexibility to handle complex scenarios like blending multiple animations, synchronizing movement with gameplay, and layering dynamic animation effects. Some of the core concepts I explored during this project include:
 
-I found that implementing both TAA and TSR significantly improved the visual fidelity of my game. The smooth, high-quality rendering of dynamic scenes and the reduction of aliasing made the game’s fast combat and atmospheric environments more immersive. However, I plan to further explore community resources and third-party tutorials to optimize these settings for different hardware configurations, ensuring Undead Samurai performs well across various platforms while retaining its visual quality.
-# Example Game Source
-An excellent example of a game that offers flexibility in anti-aliasing settings is The Witcher 3: Wild Hunt. Developed by CD Projekt Red, the game is critically acclaimed for its vast open world and stunning visuals, which are enhanced through the use of various anti-aliasing techniques. Players are given the option to choose between methods like TAA and FXAA, allowing them to tailor the visual quality and performance based on their hardware and preferences.(The Witcher 3: Wild Hunt, 2015)
+BlendSpaces:
+BlendSpaces allow the seamless transition between animations based on input parameters, such as speed. This is ideal for creating lifelike movement where characters transition smoothly from idle to walking and then to running.
 
-FXAA in The Witcher 3 provides minimal performance impact, making it suitable for lower-end systems, but at the cost of some visual clarity. The technique can cause noticeable blurring of fine textures and details, particularly in highly detailed environments like forests or cities. On the other hand, TAA offers better image quality by significantly reducing jagged edges and maintaining sharper visuals, which is particularly beneficial in the game’s richly detailed landscapes and complex character models. However, like in many games, TAA can introduce some degree of blurring or ghosting in motion-heavy scenes.
+Montages and Slot Nodes:
+Montages provide a mechanism to play animations independently of the main animation graph, making them ideal for actions like attacking or interacting with objects. Slot nodes allow developers to define areas of the skeletal mesh to play specific animations without interfering with other parts.
 
-Through these settings, The Witcher 3 allows players to strike a balance between performance and visual fidelity. By comparing the anti-aliasing methods in this game, I found that TAA offered the best balance for maintaining the immersive, high-quality visuals of the game without a significant drop in performance—much like my experience with Undead Samurai. This comparison highlights how crucial it is to have the option to adjust anti-aliasing settings to meet both the aesthetic and performance needs of a game.
+Skeletal Mesh Control:
+Unreal Engine's Animation Blueprint system supports isolating and controlling parts of a character's skeletal mesh, enabling independent movement of upper and lower body parts. This feature is particularly useful for scenarios like running while aiming or attacking.
 
 
 
 ## Implementation
 
-<html>
-<body>
+Creative and Technical Approaches
+To implement the character animations, I followed a structured workflow using Unreal Engine 5’s Animation Blueprint system:
 
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/NbYD3lNKyrQ" title="Anti Aliasing methods Unreal Engine test" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</body>
-</html>
+1. Character Import and Animation Setup
+I started by importing a skeletal mesh and its associated animations (idle, walk, and run). The skeletal mesh was fully rigged, enabling direct integration with Unreal Engine’s animation tools.
 
-g UE5UndeadSamurai.html…]()
+2. Creating the BlendSpace 1D
+A BlendSpace 1D was used to manage the transitions between the idle, walk, and run animations. The steps were:
+
+Parameter Assignment:
+Configured a speed parameter to drive the BlendSpace. This parameter was updated in real-time based on the character’s movement speed.
+Animation Mapping:
+Mapped the idle animation at speed 0, the walk animation at mid-speed, and the run animation at maximum speed.
+Smooth Transitions:
+Adjusted interpolation settings to ensure smooth transitions between animations as the speed parameter changed.
+3. Setting Up the Animation Blueprint
+The Animation Blueprint served as the central hub for managing animations. Key actions included:
+
+State Machine Creation:
+Built a state machine within the Animation Blueprint to define states like “Idle/Walk/Run.” Each state was connected to the BlendSpace to handle animation blending dynamically.
+Event Graph Programming:
+Used the Animation Blueprint’s event graph to retrieve character movement data (e.g., velocity) and feed it into the BlendSpace’s speed parameter.
+4. Adding a Default Slot for Montages
+To enable montage playback, I added a default slot node to the Animation Blueprint.
+
+Slot Node Placement:
+Positioned the default slot in the animation graph, ensuring it could overlay animations from montages without interfering with the BlendSpace or state machine logic.
+Montage Integration:
+Created and linked animation montages (e.g., attack or interaction animations) to specific gameplay events, allowing them to play independently of other animations.
+5. Independent Movement of Skeletal Mesh Parts
+For greater control, I configured the lower and upper body parts to move independently:
+
+Bone Filtering:
+Used bone filtering in the Animation Blueprint to isolate movement to specific skeletal parts. For instance, the lower body followed BlendSpace-driven animations (idle, walk, run), while the upper body could perform separate actions like aiming or attacking.
+Layered Blending:
+Applied layered blending to merge upper-body animations (e.g., attacking) with lower-body movement seamlessly.
 
 
 
 
 
-### What creative or technical approaches did you use or try, and how did this contribute to the outcome?
+
+
 
 
 
 
 
 ## Outcome
-After testing both TAA and TSR in my Undead Samurai game, I ultimately decided to use TAA over TSR. While TSR delivered superior visual quality, the performance trade-off was simply not worth it. Implementing TSR resulted in a significant frame rate drop of 30 FPS, which negatively impacted the gameplay experience, especially during action-heavy sequences. Although TAA doesn't offer quite the same level of sharpness as TSR, it still provides a strong balance between visual fidelity and performance, maintaining smoother gameplay while delivering good image quality. Given the fast-paced nature of Undead Samurai, ensuring consistent frame rates is critical, and TAA allowed me to achieve that without compromising too much on visuals.
+The final implementation achieved fluid character animations with dynamic movement and independent skeletal part control.
+
+Visual Quality
+Seamless Blending:
+The BlendSpace transitions were smooth, creating lifelike movement as the character changed speed.
+Layered Animation Effects:
+The slot node and bone filtering enabled complex animations, such as running while performing attacks, without disrupting the natural motion of other body parts.
+Gameplay Responsiveness
+Real-Time Updates:
+The speed parameter linked to the BlendSpace updated in real time based on player input, ensuring animations reflected character actions instantly.
+Independent Animation Playback:
+Montages played independently, allowing for responsive and context-specific animations like combat moves or item interactions.
 
 
 
 ## Critical Reflection
-After testing TAA and TSR in Undead Samurai, I chose TAA due to performance concerns. While TSR produced sharper visuals, it resulted in a 30 FPS drop, which significantly affected gameplay, especially in fast-paced combat sequences. Although TAA isn’t as visually crisp, it provided a much better balance between image quality and performance, maintaining a smooth and responsive experience.
+Strengths
+Flexibility:
+The Animation Blueprint system’s modularity allowed me to handle complex animation scenarios, such as combining BlendSpaces with montage playback and skeletal mesh control.
+Responsiveness:
+The seamless transitions and independent skeletal part movement enhanced the character’s responsiveness, improving player immersion.
+Limitations
+Limited Procedural Animation:
+While the BlendSpace and montages worked well, the implementation lacked procedural animations, such as inverse kinematics for foot placement on uneven terrain.
+Montage Overlap Handling:
+Managing overlapping montages required additional logic, which was not fully optimized in this iteration.
 
-This process taught me that, while visual fidelity is important, performance takes priority in action-heavy games like Undead Samurai. A slight reduction in graphical quality is an acceptable trade-off if it ensures consistent gameplay, and TAA offered that balance. Going forward, I will continue optimizing for both visuals and performance, but my priority will always be the player experience.
+Future Improvements
+To further enhance the animation system, I plan to:
 
-### What did or did not work well and why?
-During testing, FXAA (Fast Approximate Anti-Aliasing) didn’t perform well for Undead Samurai. While it is lightweight and didn’t impact performance much, the image quality suffered. FXAA tended to blur fine details, especially in the game’s complex textures and dark environments, leading to a less crisp and polished look. The lack of clarity was especially noticeable during fast-paced combat, where sharp visuals are essential to maintaining immersion and focus.
+Implement Procedural Animation Techniques:
+Add features like inverse kinematics to adapt animations dynamically to the environment (e.g., foot alignment on slopes).
 
-In contrast, TAA (Temporal Anti-Aliasing) worked much better. It effectively reduced jagged edges and maintained better image sharpness compared to FXAA, while still balancing performance. While TAA can sometimes introduce blurring or ghosting in fast-moving scenes, these issues were minimal after fine-tuning its settings. This made TAA the superior choice, providing a smoother and visually pleasing experience without significantly affecting the game's performance.
+Enhance Montage Logic:
+Introduce layered montage playback systems to handle overlapping actions seamlessly, such as attacking while dodging.
 
-### What would you do differently next time?
-
-- Are there any new approaches, methodologies or different software that you wish to incorporate if you have another chance?
-- Is there another aspect you believe should have been the focus?
+BlendSpace 2D Integration:
+Upgrade to a BlendSpace 2D to handle additional parameters like direction, enabling diagonal movement animations.
 
 ## Bibliography
 
-Temporal Super Resolution in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/temporal-super-resolution-in-unreal-engine (Accessed 10/10/2024).
+How To Make An Animation Blueprint In Unreal Engine 5 | How To Animate A Character - UE5 Tutorial (2022) At: https://www.youtube.com/watch?v=TE-SsP3pigs (Accessed  16/11/2024).
 -
-Gameinspired (2021) UE4 — TemporalAA vs FXAA. At: https://gameinspired-mail.medium.com/ue4-temporalaa-vs-fxaa-4ae71d3e89b6 (Accessed  10/10/2024).
+Animation Blueprints in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/animation-blueprints-in-unreal-engine (Accessed  16/11/2024).
 -
-Anti Aliasing and Upscaling in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/anti-aliasing-and-upscaling-in-unreal-engine (Accessed  10/10/2024).
--
-The Witcher 3: Wild Hunt Next-gen Performance Analysis - Acceptable Qualities (2023) At: https://www.overclockersclub.com/reviews/witcher_3_ng_performance/2.htm (Accessed  20/10/2024).
--
+
 
 ChatGPT (s.d.) At: https://chatgpt.com (Accessed  10/10/2024).
 
