@@ -11,95 +11,113 @@ Bora Tibet Ozdemir
 
 
 
+Interactive environments are an essential component of immersive gameplay, enabling players to interact with the world in intuitive and meaningful ways. Physics-based systems, such as dynamic doors, add realism by responding naturally to player actions. In Unreal Engine 5, the physics system provides a robust framework for simulating real-world interactions through components like Physics Constraints, which enable detailed control over motion and behavior.
 
-In modern game development, anti-aliasing (AA) plays a crucial role in improving visual quality by smoothing out jagged edges (aliasing) that appear on rendered objects. However, different anti-aliasing techniques come with their own trade-offs between visual fidelity and performance. My research focused on various anti-aliasing methods, how they impact performance and quality, and their optimal implementation in Unreal Engine 5 (UE5).
+To create a physics-based door, I utilized Unreal Engine 5's Physics Constraint component and configured the door's motion to react realistically to player input. My implementation was informed by the following resources:
 
-1. Overview of Anti-Aliasing Methods
-There are several prominent anti-aliasing techniques used in real-time rendering, each offering a different balance between image quality and computational cost:
-
-MSAA (Multisample Anti-Aliasing): One of the oldest methods, MSAA samples multiple points within each pixel to smooth out edges. While it offers decent quality, it tends to be computationally expensive, especially in deferred rendering environments like UE5.
-
-FXAA (Fast Approximate Anti-Aliasing): FXAA is a post-processing technique that blurs jagged edges by analyzing contrast in the image. It's extremely fast and light on performance but can lead to a soft, less detailed final image, particularly in high-contrast scenes.
-
-TAA (Temporal Anti-Aliasing): TAA is a more advanced method that utilizes information from multiple frames over time to reduce aliasing. While it provides better results than FXAA, it can introduce motion blur or ghosting artifacts if not properly calibrated. In UE5, TAA is one of the most widely used AA methods due to its balance between quality and performance.
-
-DLSS (Deep Learning Super Sampling): Leveraging AI and NVIDIA's GPUs, DLSS uses a neural network to upscale lower-resolution images while maintaining high visual quality. It's an advanced solution that can significantly boost performance while maintaining (or even improving) image quality, but it’s only available on supported hardware.
+Unreal Engine Documentation
 
 
-In my research on anti-aliasing in Unreal Engine 5, I focused on the documentation provided by Epic Games regarding TAA (Temporal Anti-Aliasing) and TSR (Temporal Super Resolution). The source provided valuable insights into how Unreal Engine handles these techniques natively and offered practical commands for fine-tuning TAA. I also explored how TSR can be implemented to balance performance and quality, with a particular emphasis on how the engine utilizes temporal data to upscale rendering while maintaining image clarity. The benchmarks comparing different anti-aliasing methods, especially between TAA and TSR, were useful in understanding the trade-offs for various hardware setups and game types.
+This documentation provided an in-depth overview of physics constraints, their parameters, and how they can be applied to achieve controlled physics-driven motion in actors like doors.(Physics Constraint Component User Guide in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community, s.d.)
+YouTube Tutorials
 
-I found the documentation on TAA and TSR in Unreal Engine 5 to be comprehensive and well-structured, especially in terms of explaining the trade-offs between visual quality and performance. TAA was well-explained, with practical examples of its settings and how they affect ghosting and blurring, but I felt that more examples on optimizing TAA for specific scene types, such as fast-moving or high-detail environments, could have been provided. I appreciated the detailed explanation of TSR, which provided a clear understanding of how it improves performance by rendering at a lower resolution and then upscaling using temporal data to produce a high-quality output.
+I consulted video tutorials demonstrating physics-based mechanics in Unreal Engine to better understand how to configure constraint settings for interactive gameplay elements. These tutorials served as practical references for implementing swing motion and setting up character interactions.
+Key Insights
+Physics Constraints
+Physics Constraints are pivotal for limiting and controlling the motion of physics-driven actors in Unreal Engine. They simulate realistic joint behavior by restricting movement along specified axes or within defined angular ranges. Key parameters include:
 
-While I agreed with the general recommendation of TAA for most projects due to its balanced performance-to-quality ratio, I found TSR to be a more versatile solution, particularly because it doesn’t rely on specific hardware (unlike DLSS). However, I would have liked more discussion in the documentation about the potential downsides of TSR, such as how it handles extreme motion or high-complexity scenes. In contrast to TAA, which can be more predictable but sometimes results in ghosting, TSR’s advanced upscaling might not always deliver the sharpest image in every scenario.
-
-To supplement my understanding, I plan to explore additional third-party guides and community discussions on fine-tuning TSR for different platforms, as well as how TAA can be optimized in highly dynamic environments.
-# Example Documentation
-
-Certainly! Here’s the revised version, tailored to improving the quality of your Undead Samurai game by implementing TAA and TSR anti-aliasing methods:
-
-In an effort to enhance the visual quality of my Undead Samurai game, I focused on implementing and fine-tuning Temporal Anti-Aliasing (TAA) and Temporal Super Resolution (TSR) within Unreal Engine 5. Both anti-aliasing techniques were essential to achieving sharper and more polished visuals while maintaining smooth performance, especially in a game like Undead Samurai, where the atmosphere is dark, and fast-paced combat can introduce visual noise or aliasing issues. To better understand and apply these methods, I referred to the Unreal Engine Blueprints API References and Unreal Engine 5 Documentation (Unreal Engine Blueprint API Reference | Unreal Engine 5.4 Documentation | Epic Developer Community, s.d.).
-
-I found that implementing both TAA and TSR significantly improved the visual fidelity of my game. The smooth, high-quality rendering of dynamic scenes and the reduction of aliasing made the game’s fast combat and atmospheric environments more immersive. However, I plan to further explore community resources and third-party tutorials to optimize these settings for different hardware configurations, ensuring Undead Samurai performs well across various platforms while retaining its visual quality.
-# Example Game Source
-An excellent example of a game that offers flexibility in anti-aliasing settings is The Witcher 3: Wild Hunt. Developed by CD Projekt Red, the game is critically acclaimed for its vast open world and stunning visuals, which are enhanced through the use of various anti-aliasing techniques. Players are given the option to choose between methods like TAA and FXAA, allowing them to tailor the visual quality and performance based on their hardware and preferences.(The Witcher 3: Wild Hunt, 2015)
-
-FXAA in The Witcher 3 provides minimal performance impact, making it suitable for lower-end systems, but at the cost of some visual clarity. The technique can cause noticeable blurring of fine textures and details, particularly in highly detailed environments like forests or cities. On the other hand, TAA offers better image quality by significantly reducing jagged edges and maintaining sharper visuals, which is particularly beneficial in the game’s richly detailed landscapes and complex character models. However, like in many games, TAA can introduce some degree of blurring or ghosting in motion-heavy scenes.
-
-Through these settings, The Witcher 3 allows players to strike a balance between performance and visual fidelity. By comparing the anti-aliasing methods in this game, I found that TAA offered the best balance for maintaining the immersive, high-quality visuals of the game without a significant drop in performance—much like my experience with Undead Samurai. This comparison highlights how crucial it is to have the option to adjust anti-aliasing settings to meet both the aesthetic and performance needs of a game.
+Swing and Twist Motions: Control rotational movement around specific axes.
+Angular Drive Mode: Enables dynamic motion based on physical forces such as pushing or pulling.
+Simulated Physics
+Setting an actor to "Simulate Physics" allows it to interact with forces like gravity and player input. This feature, combined with collision generation, ensures the actor responds realistically to its environment.(How to Make a Physics Door in Unreal Engine 5, 2023)
 
 
 
 ## Implementation
 
-<html>
-<body>
+Creative and Technical Approaches
+To create the physics-based door, I followed a structured workflow leveraging Unreal Engine 5's physics system.
 
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/NbYD3lNKyrQ" title="Anti Aliasing methods Unreal Engine test" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</body>
-</html>
+1. Door Actor Creation
+I began by creating a Door Actor blueprint to serve as the container for the door system components. This modular approach allows the door to be reused in multiple instances with consistent behavior.
 
-g UE5UndeadSamurai.html…]()
+2. Static Mesh and Collision Setup
+Static Mesh:
+Added the door asset from Unreal Engine 5’s Starter Content as the static mesh for the Door Actor. This provided a visually realistic door model for the system.
+Collision:
+Generated a simple box collision for the door. This ensured the door could interact physically with other objects and the player character.
+3. Physics Simulation
+Enabled "Simulate Physics" for the static mesh, allowing the door to respond naturally to environmental forces, including the player pushing it.
+
+4. Physics Constraint Component
+Added a Physics Constraint component to the Door Actor and configured its settings:
+
+Attachment:
+Linked the Physics Constraint to the static mesh to control its motion.
+Swing 1 Motion:
+Limited the Swing 1 axis to 90 degrees, allowing the door to open in the direction of the player’s push.
+Swing 2 and Twist Motion:
+Locked these motions to prevent unintended rotational behaviors, ensuring the door remains stable.
+Angular Drive Mode:
+Enabled Twist and Swing and set the strength to 50, providing a balanced resistance and natural motion when pushed.
 
 
 
-
-
-### What creative or technical approaches did you use or try, and how did this contribute to the outcome?
 
 
 
 
 
 ## Outcome
-After testing both TAA and TSR in my Undead Samurai game, I ultimately decided to use TAA over TSR. While TSR delivered superior visual quality, the performance trade-off was simply not worth it. Implementing TSR resulted in a significant frame rate drop of 30 FPS, which negatively impacted the gameplay experience, especially during action-heavy sequences. Although TAA doesn't offer quite the same level of sharpness as TSR, it still provides a strong balance between visual fidelity and performance, maintaining smoother gameplay while delivering good image quality. Given the fast-paced nature of Undead Samurai, ensuring consistent frame rates is critical, and TAA allowed me to achieve that without compromising too much on visuals.
+The final physics-based door system allowed for realistic and interactive behavior.
+
+Functionality
+Natural Motion:
+The door swung open dynamically in response to the player’s movement, aligning with the direction of the push.
+Controlled Limits:
+The 90-degree constraint ensured the door opened within a realistic range, preventing unnatural behavior like over-rotation or excessive swinging.
+Player Interaction
+Intuitive Gameplay:
+Players could interact with the door by simply walking into it or applying force, enhancing immersion and realism.
+Responsive Feedback:
+The physics simulation provided immediate visual feedback, making the interaction feel smooth and natural.
 
 
 
 ## Critical Reflection
-After testing TAA and TSR in Undead Samurai, I chose TAA due to performance concerns. While TSR produced sharper visuals, it resulted in a 30 FPS drop, which significantly affected gameplay, especially in fast-paced combat sequences. Although TAA isn’t as visually crisp, it provided a much better balance between image quality and performance, maintaining a smooth and responsive experience.
+Strengths
+Realism:
+By simulating physics and applying constraints, the door behaved naturally, contributing to the overall immersion of the environment.
+Modularity:
+The blueprint-based approach allows the physics door to be easily replicated or modified for use in other projects.
+Limitations
+Collision Optimization:
+The simple box collision worked well but might require refinement for more complex door shapes or scenarios involving detailed interactions.
+Limited Interactions:
+The current implementation only supports basic pushing interactions. Additional features like locking mechanisms or scripted opening could enhance functionality.
+Future Improvements
+To enhance the system further, I plan to:
 
-This process taught me that, while visual fidelity is important, performance takes priority in action-heavy games like Undead Samurai. A slight reduction in graphical quality is an acceptable trade-off if it ensures consistent gameplay, and TAA offered that balance. Going forward, I will continue optimizing for both visuals and performance, but my priority will always be the player experience.
+Add Locking and Unlocking Functionality:
+Introduce a mechanism to lock the door, requiring specific player actions (e.g., keys) to unlock it.
 
-### What did or did not work well and why?
-During testing, FXAA (Fast Approximate Anti-Aliasing) didn’t perform well for Undead Samurai. While it is lightweight and didn’t impact performance much, the image quality suffered. FXAA tended to blur fine details, especially in the game’s complex textures and dark environments, leading to a less crisp and polished look. The lack of clarity was especially noticeable during fast-paced combat, where sharp visuals are essential to maintaining immersion and focus.
+Integrate Audio and Visual Feedback:
+Add sounds and visual cues (e.g., creaking noises or particle effects) to make the interaction more engaging.
 
-In contrast, TAA (Temporal Anti-Aliasing) worked much better. It effectively reduced jagged edges and maintained better image sharpness compared to FXAA, while still balancing performance. While TAA can sometimes introduce blurring or ghosting in fast-moving scenes, these issues were minimal after fine-tuning its settings. This made TAA the superior choice, providing a smoother and visually pleasing experience without significantly affecting the game's performance.
+Advanced Physics Options:
+Experiment with soft constraints or dynamic hinge joints to simulate more complex door behaviors, such as sliding or double-swing doors.
 
-### What would you do differently next time?
 
-- Are there any new approaches, methodologies or different software that you wish to incorporate if you have another chance?
-- Is there another aspect you believe should have been the focus?
 
 ## Bibliography
+How to Make a Physics Door in Unreal Engine 5 (2023) At: https://www.youtube.com/watch?v=30G-WJ5aMpA (Accessed  16/11/2024).
+-
+Physics Constraint Component User Guide in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/physics-constraint-component-user-guide-in-unreal-engine (Accessed  16/11/2024).
+-
+Physics Constraint Between Character And Physics Object - Programming & Scripting / Blueprint (2022) At: https://forums.unrealengine.com/t/physics-constraint-between-character-and-physics-object/647342 (Accessed  16/11/2024).
+-
 
-Temporal Super Resolution in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/temporal-super-resolution-in-unreal-engine (Accessed 10/10/2024).
--
-Gameinspired (2021) UE4 — TemporalAA vs FXAA. At: https://gameinspired-mail.medium.com/ue4-temporalaa-vs-fxaa-4ae71d3e89b6 (Accessed  10/10/2024).
--
-Anti Aliasing and Upscaling in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/anti-aliasing-and-upscaling-in-unreal-engine (Accessed  10/10/2024).
--
-The Witcher 3: Wild Hunt Next-gen Performance Analysis - Acceptable Qualities (2023) At: https://www.overclockersclub.com/reviews/witcher_3_ng_performance/2.htm (Accessed  20/10/2024).
--
+
 
 ChatGPT (s.d.) At: https://chatgpt.com (Accessed  10/10/2024).
 
