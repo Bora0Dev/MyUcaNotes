@@ -11,86 +11,293 @@ Bora Tibet Ozdemir
 
 
 
+In developing my Unreal Engine 5 project, I focused on creating an immersive gameplay experience centered around magic combat and enemy AI. To achieve this, I explored a wide range of features and tools offered by Unreal Engine, including Niagara Fluids for visual effects, behavior trees for AI, and Widget Blueprints for the HUD. My approach was guided by in-depth research and learning from tutorials, which provided practical examples and best practices.
 
-In modern game development, anti-aliasing (AA) plays a crucial role in improving visual quality by smoothing out jagged edges (aliasing) that appear on rendered objects. However, different anti-aliasing techniques come with their own trade-offs between visual fidelity and performance. My research focused on various anti-aliasing methods, how they impact performance and quality, and their optimal implementation in Unreal Engine 5 (UE5).
+Niagara Fluids and VFX in Unreal Engine 5
+The magic combat system relied heavily on Niagara Fluids to deliver visually compelling effects. Using "Niagara Fluids Smoke Portal VFX Tutorial in Unreal Engine 5.3" (RedefineFX, 2024), I learned how to craft detailed, real-time simulations for fireballs, explosions, and energy trails. This tutorial highlighted how to:
 
-1. Overview of Anti-Aliasing Methods
-There are several prominent anti-aliasing techniques used in real-time rendering, each offering a different balance between image quality and computational cost:
+Adjust particle behavior dynamically based on player input.
+Optimize particle systems for real-time responsiveness without significant performance loss.
+Add visual flair to effects like smoke trails, fire bursts, and magical impact effects.
+These visual enhancements were integral to creating a game world where the use of magic felt powerful and satisfying.
 
-MSAA (Multisample Anti-Aliasing): One of the oldest methods, MSAA samples multiple points within each pixel to smooth out edges. While it offers decent quality, it tends to be computationally expensive, especially in deferred rendering environments like UE5.
+UI and HUD Management
+Player engagement requires clear communication of critical information, such as health and stamina. For this, I referred to "Best Practices for Creating and Managing Widgets | UI | Widgets | HUD | Unreal Engine 5 Tutorial" (2023). Key takeaways included:
 
-FXAA (Fast Approximate Anti-Aliasing): FXAA is a post-processing technique that blurs jagged edges by analyzing contrast in the image. It's extremely fast and light on performance but can lead to a soft, less detailed final image, particularly in high-contrast scenes.
+Using Widget Blueprints to create dynamic health and stamina bars.
+Ensuring widgets are responsive to in-game events, such as taking damage or casting a spell.
+Organizing HUD elements to remain unobtrusive yet informative, contributing to an immersive experience.
+The ability to update HUD elements in real-time provided players with immediate feedback, improving gameplay fluidity.
 
-TAA (Temporal Anti-Aliasing): TAA is a more advanced method that utilizes information from multiple frames over time to reduce aliasing. While it provides better results than FXAA, it can introduce motion blur or ghosting artifacts if not properly calibrated. In UE5, TAA is one of the most widely used AA methods due to its balance between quality and performance.
+AI Behavior Using Behavior Trees
+Creating intelligent enemy AI was a crucial aspect of the project. My implementation focused on two key states: chase and combat. Using "Smart Enemy AI | (Part 1: Behavior Trees) | Tutorial in Unreal Engine 5 (UE5)" (2023), I built an AI system that dynamically reacted to player presence.
 
-DLSS (Deep Learning Super Sampling): Leveraging AI and NVIDIA's GPUs, DLSS uses a neural network to upscale lower-resolution images while maintaining high visual quality. It's an advanced solution that can significantly boost performance while maintaining (or even improving) image quality, but it’s only available on supported hardware.
+Chase State: The skeleton AI transitions to this state upon detecting the player. A perception system triggers the chase behavior, directing the enemy toward the player's position while navigating around obstacles. This state adds tension and urgency to the gameplay as enemies actively pursue the player.
 
+Combat State: Once the skeleton AI reaches proximity to the player, it transitions into a combat state. Here, the enemy executes attack animations using animation notifies to synchronize damage application with the swing of its weapon. The AI’s responsiveness in this state ensures engaging, action-packed encounters.
 
-In my research on anti-aliasing in Unreal Engine 5, I focused on the documentation provided by Epic Games regarding TAA (Temporal Anti-Aliasing) and TSR (Temporal Super Resolution). The source provided valuable insights into how Unreal Engine handles these techniques natively and offered practical commands for fine-tuning TAA. I also explored how TSR can be implemented to balance performance and quality, with a particular emphasis on how the engine utilizes temporal data to upscale rendering while maintaining image clarity. The benchmarks comparing different anti-aliasing methods, especially between TAA and TSR, were useful in understanding the trade-offs for various hardware setups and game types.
+These behavior tree states provided a foundation for creating reactive and challenging enemies, with potential for further expansion into more complex AI behaviors.
 
-I found the documentation on TAA and TSR in Unreal Engine 5 to be comprehensive and well-structured, especially in terms of explaining the trade-offs between visual quality and performance. TAA was well-explained, with practical examples of its settings and how they affect ghosting and blurring, but I felt that more examples on optimizing TAA for specific scene types, such as fast-moving or high-detail environments, could have been provided. I appreciated the detailed explanation of TSR, which provided a clear understanding of how it improves performance by rendering at a lower resolution and then upscaling using temporal data to produce a high-quality output.
+Sword Tracing for Melee Combat
+To make combat interactions feel precise and impactful, I implemented a sword tracing system. Following the principles outlined in "Unreal Engine 5 RPG Tutorial Series - #10: Sword Trace Damage and Hit Reactions" (2023), this system allowed for:
 
-While I agreed with the general recommendation of TAA for most projects due to its balanced performance-to-quality ratio, I found TSR to be a more versatile solution, particularly because it doesn’t rely on specific hardware (unlike DLSS). However, I would have liked more discussion in the documentation about the potential downsides of TSR, such as how it handles extreme motion or high-complexity scenes. In contrast to TAA, which can be more predictable but sometimes results in ghosting, TSR’s advanced upscaling might not always deliver the sharpest image in every scenario.
+Accurate detection of sword collisions with player or enemy meshes.
+Triggering particle and sound effects upon successful hits to enhance combat feedback.
+Synchronizing damage with attack animations, ensuring that only well-timed attacks register.
+Sword tracing added depth to melee combat, making encounters feel more dynamic and rewarding.
 
-To supplement my understanding, I plan to explore additional third-party guides and community discussions on fine-tuning TSR for different platforms, as well as how TAA can be optimized in highly dynamic environments.
-# Example Documentation
+Animation Systems
+Smooth and believable character animations are essential for maintaining immersion. Referring to "Unreal Engine 5 Tutorial - Animation Blueprint Part 1: State Machines" (2023), I set up state machines for both the player and skeleton enemies. Combined with animation notifies from "Unreal Engine 5 Tutorial - Animation Notifies" (2022), this system ensured:
 
-Certainly! Here’s the revised version, tailored to improving the quality of your Undead Samurai game by implementing TAA and TSR anti-aliasing methods:
+Seamless transitions between idle, walking, chasing, and attacking animations.
+Precise timing for visual and mechanical actions, such as attacks and hit reactions.
+Flexibility to expand animations in the future, such as adding dodging or parrying.
 
-In an effort to enhance the visual quality of my Undead Samurai game, I focused on implementing and fine-tuning Temporal Anti-Aliasing (TAA) and Temporal Super Resolution (TSR) within Unreal Engine 5. Both anti-aliasing techniques were essential to achieving sharper and more polished visuals while maintaining smooth performance, especially in a game like Undead Samurai, where the atmosphere is dark, and fast-paced combat can introduce visual noise or aliasing issues. To better understand and apply these methods, I referred to the Unreal Engine Blueprints API References and Unreal Engine 5 Documentation (Unreal Engine Blueprint API Reference | Unreal Engine 5.4 Documentation | Epic Developer Community, s.d.).
-
-I found that implementing both TAA and TSR significantly improved the visual fidelity of my game. The smooth, high-quality rendering of dynamic scenes and the reduction of aliasing made the game’s fast combat and atmospheric environments more immersive. However, I plan to further explore community resources and third-party tutorials to optimize these settings for different hardware configurations, ensuring Undead Samurai performs well across various platforms while retaining its visual quality.
-# Example Game Source
-An excellent example of a game that offers flexibility in anti-aliasing settings is The Witcher 3: Wild Hunt. Developed by CD Projekt Red, the game is critically acclaimed for its vast open world and stunning visuals, which are enhanced through the use of various anti-aliasing techniques. Players are given the option to choose between methods like TAA and FXAA, allowing them to tailor the visual quality and performance based on their hardware and preferences.(The Witcher 3: Wild Hunt, 2015)
-
-FXAA in The Witcher 3 provides minimal performance impact, making it suitable for lower-end systems, but at the cost of some visual clarity. The technique can cause noticeable blurring of fine textures and details, particularly in highly detailed environments like forests or cities. On the other hand, TAA offers better image quality by significantly reducing jagged edges and maintaining sharper visuals, which is particularly beneficial in the game’s richly detailed landscapes and complex character models. However, like in many games, TAA can introduce some degree of blurring or ghosting in motion-heavy scenes.
-
-Through these settings, The Witcher 3 allows players to strike a balance between performance and visual fidelity. By comparing the anti-aliasing methods in this game, I found that TAA offered the best balance for maintaining the immersive, high-quality visuals of the game without a significant drop in performance—much like my experience with Undead Samurai. This comparison highlights how crucial it is to have the option to adjust anti-aliasing settings to meet both the aesthetic and performance needs of a game.
 
 
 
 ## Implementation
+Magic Combat System
+The magic combat system was the centerpiece of the gameplay. By leveraging Niagara Fluids, I created visually dynamic spells that included:
 
-<html>
-<body>
+Fireballs: Projectile-based spells with trails that explode on impact.
+Area-of-Effect (AoE): Spells that create magical zones with effects like shockwaves or energy bursts.
+Energy Trails: Persistent visual effects that follow the player's movements, adding a magical ambiance.
+The system integrates seamlessly with the stamina mechanic, where casting spells depletes stamina, requiring players to balance their resources strategically.
 
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/NbYD3lNKyrQ" title="Anti Aliasing methods Unreal Engine test" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</body>
-</html>
+Enemy AI Behavior
+The skeleton enemies’ behavior is driven by a simplified yet effective behavior tree focused on two states: chase and combat.
 
-g UE5UndeadSamurai.html…]()
+Chase State: Skeletons detect the player within a specified radius using Unreal Engine’s perception system. They dynamically navigate toward the player’s position, avoiding obstacles using the built-in navigation mesh.
+Combat State: Upon reaching the player, skeletons transition to combat mode, executing attack animations. Damage is applied through sword tracing, synchronized with animation notifies to ensure precision.
+These states create a reactive and engaging AI that challenges the player without feeling repetitive.
+
+HUD with Health and Stamina
+The HUD was implemented using Widget Blueprints to display health and stamina bars. These elements:
+
+Update in real-time to reflect the player’s current status.
+React to in-game events such as taking damage or using stamina for casting spells.
+Provide intuitive feedback, helping players make informed decisions during combat.
+Sword Tracing for Damage
+The sword tracing system ensures realistic combat interactions by:
+
+Detecting collisions between the skeleton’s weapon and the player character.
+Triggering visual effects and sound cues on successful hits.
+Adding a layer of realism by aligning damage events with weapon swings.
 
 
 
 
 
-### What creative or technical approaches did you use or try, and how did this contribute to the outcome?
 
 
 
 
 
 ## Outcome
-After testing both TAA and TSR in my Undead Samurai game, I ultimately decided to use TAA over TSR. While TSR delivered superior visual quality, the performance trade-off was simply not worth it. Implementing TSR resulted in a significant frame rate drop of 30 FPS, which negatively impacted the gameplay experience, especially during action-heavy sequences. Although TAA doesn't offer quite the same level of sharpness as TSR, it still provides a strong balance between visual fidelity and performance, maintaining smoother gameplay while delivering good image quality. Given the fast-paced nature of Undead Samurai, ensuring consistent frame rates is critical, and TAA allowed me to achieve that without compromising too much on visuals.
+The development of this project resulted in the creation of a polished and cohesive game that successfully integrates several advanced systems, offering an engaging and immersive player experience. Beyond achieving technical goals, the project also served as a personal milestone, helping me grow significantly as a game developer. This section outlines the tangible and intangible outcomes of this project, from the game's systems and mechanics to its impact on my skills and aspirations.
+
+A Complete and Playable Game
+The most immediate and tangible outcome of this project was the creation of a fully functional game featuring a dynamic combat system, intelligent enemy behavior, and an immersive interface. These core elements worked in harmony to provide players with a challenging and satisfying gameplay loop, which includes:
+
+Magic Combat System:
+
+The magic combat system became the centerpiece of the game, offering players visually stunning and impactful offensive abilities. Each spell was meticulously designed to feel powerful and responsive, ensuring that combat moments felt rewarding.
+Sword Tracing for Melee Combat:
+
+The sword tracing system added precision to melee attacks, creating a sense of connection between the player’s actions and their effects in the game world. This system made close-range combat feel weighty and engaging.
+Enemy AI with Chase and Combat States:
+
+The behavior tree-driven enemy AI added tension and unpredictability to the game. Enemies dynamically transitioned between chase and combat states, making them feel alive and responsive. This simple but effective design kept players on their toes during encounters.
+HUD Integration:
+
+The health and stamina systems were effectively displayed on a responsive and polished HUD. This kept players informed about their character’s status, enhancing decision-making during combat and contributing to a smooth user experience.
+Point System and Victory Condition:
+
+The point system provided players with a clear objective—reaching 10,000 points to win the game. This mechanic added structure to the gameplay, giving players a sense of progression and accomplishment.
+A Visually Polished Experience
+Another significant outcome was the game’s visual presentation, which was greatly enhanced by advanced features in Unreal Engine 5:
+
+Niagara Particle Effects:
+
+Implementing Niagara particle systems allowed me to create visually stunning magic effects and environmental flourishes. These effects not only improved the aesthetic quality of the game but also contributed to gameplay feedback by making actions like casting spells feel impactful.
+Atmospheric Lighting and Environments:
+
+Carefully designed lighting and environments added depth and immersion to the game world. Dark and eerie tones complemented the skeleton enemies, enhancing the overall atmosphere.
+Player Feedback and Replayability
+Although this was a solo project, testing the game with friends and peers provided invaluable insights. Feedback confirmed that the game was both fun and challenging, with players praising the responsiveness of the combat system and the intensity of the enemy AI. The dynamic nature of the AI and the escalating difficulty ensured replayability, as no two playthroughs felt exactly the same.
+
+Personal and Professional Growth
+Beyond the technical achievements, this project marked a turning point in my personal and professional development as a game developer. It challenged me to grow in several key areas:
+
+Improved Technical Skills:
+
+I gained hands-on experience with Unreal Engine’s advanced features, including behavior trees, animation blueprints, and the Niagara particle system. These skills significantly expanded my toolkit and will serve as a strong foundation for future projects.
+Enhanced Problem-Solving Abilities:
+
+Debugging issues like AI transitions, collision detection in the sword tracing system, and performance optimization honed my analytical thinking and troubleshooting skills.
+Time Management and Prioritization:
+
+Successfully delivering a complete game within a set timeline required careful planning and prioritization. This project taught me to focus on high-impact features while deferring less critical elements for future iterations.
+Broader Implications for My Development Journey
+This game is the first project that I am genuinely proud of, marking a shift from experimentation to creating something meaningful and polished. It represents a culmination of the knowledge and skills I have accumulated so far and has instilled in me the confidence to tackle larger and more ambitious projects.
+
+Next Steps for the Game
+While the game is complete in its current state, there are numerous opportunities for improvement and expansion:
+
+Additional Features:
+Introducing new enemy types, environments, and spells would add variety and depth to the gameplay.
+Polishing Visuals:
+Further refining particle effects and animations could elevate the visual experience.
+Performance Optimization:
+Fine-tuning the game for better performance across different hardware configurations would make it more accessible to a wider audience.
+Conclusion
+In summary, the outcome of this project is multifaceted. Not only did I create a functional, enjoyable, and visually impressive game, but I also grew significantly as a developer. The systems I implemented—ranging from AI behavior to combat mechanics—came together to deliver a cohesive and compelling player experience. More importantly, this project has laid a strong foundation for my future as a game developer, equipping me with the skills, confidence, and ambition to push boundaries and create even more exciting projects.
 
 
 
 ## Critical Reflection
-After testing TAA and TSR in Undead Samurai, I chose TAA due to performance concerns. While TSR produced sharper visuals, it resulted in a 30 FPS drop, which significantly affected gameplay, especially in fast-paced combat sequences. Although TAA isn’t as visually crisp, it provided a much better balance between image quality and performance, maintaining a smooth and responsive experience.
+Embarking on this Unreal Engine 5 project has been a transformative experience, marking a significant milestone in my journey as a game developer. As the first game I am genuinely proud of, it challenged me to grow in various aspects, including technical skills, problem-solving abilities, and time management. This reflection delves into the personal and professional growth I achieved through this project and how the systems I developed contributed to crafting a compelling game.
 
-This process taught me that, while visual fidelity is important, performance takes priority in action-heavy games like Undead Samurai. A slight reduction in graphical quality is an acceptable trade-off if it ensures consistent gameplay, and TAA offered that balance. Going forward, I will continue optimizing for both visuals and performance, but my priority will always be the player experience.
+Growth in Game Development Skills
+One of the most valuable outcomes of this project was the improvement in my overall game development skills. Before starting this project, my experience with tools like Unreal Engine was limited to basic tutorials and smaller experiments. However, designing a complete game required me to move beyond the basics and delve into advanced systems, such as behavior trees, animation blueprints, Niagara Fluids, and HUD integration.
 
-### What did or did not work well and why?
-During testing, FXAA (Fast Approximate Anti-Aliasing) didn’t perform well for Undead Samurai. While it is lightweight and didn’t impact performance much, the image quality suffered. FXAA tended to blur fine details, especially in the game’s complex textures and dark environments, leading to a less crisp and polished look. The lack of clarity was especially noticeable during fast-paced combat, where sharp visuals are essential to maintaining immersion and focus.
+Technical Mastery: Developing complex systems like the behavior tree for enemy AI and the sword tracing system for melee combat taught me how to combine multiple Unreal Engine tools effectively. For example, linking animation notifies with combat logic to synchronize enemy attacks provided a deep understanding of how various systems interact within the engine.
 
-In contrast, TAA (Temporal Anti-Aliasing) worked much better. It effectively reduced jagged edges and maintained better image sharpness compared to FXAA, while still balancing performance. While TAA can sometimes introduce blurring or ghosting in fast-moving scenes, these issues were minimal after fine-tuning its settings. This made TAA the superior choice, providing a smoother and visually pleasing experience without significantly affecting the game's performance.
+Niagara Fluids: Crafting visually stunning magic effects using Niagara Fluids improved my proficiency in creating impactful visual effects. This skill not only added polish to my game but also gave me confidence in tackling future challenges related to real-time particle systems.
 
-### What would you do differently next time?
+System Integration: I learned the importance of integrating different gameplay elements into a cohesive whole. For example, the HUD seamlessly displayed the player’s health and stamina in real-time, while the AI interacted dynamically with the player’s actions, making the game feel immersive and reactive.
 
-- Are there any new approaches, methodologies or different software that you wish to incorporate if you have another chance?
-- Is there another aspect you believe should have been the focus?
+Problem-Solving Skills
+Game development is rife with unexpected challenges, and this project was no exception. Each hurdle I encountered demanded creative and analytical problem-solving, which became a significant area of growth.
+
+AI Behavior Challenges: One major challenge was creating AI that felt intelligent and engaging despite being relatively simple. I spent hours debugging behavior tree transitions and ensuring the AI could reliably switch between chase and combat states. By testing and iterating, I refined the system until it felt smooth and responsive, gaining a better understanding of AI design principles.
+
+Sword Tracing Accuracy: Initially, the sword tracing system wasn’t detecting collisions as accurately as I wanted. Fine-tuning the collision settings and syncing the damage logic with animation notifies resolved this issue. This process taught me the value of attention to detail in systems that directly affect gameplay.
+
+Performance Optimization: Balancing the visual quality of Niagara Fluids with real-time performance was another obstacle. Through experimentation, I optimized the particle effects to maintain high-quality visuals without compromising frame rates, ensuring a smooth experience for players.
+
+Each problem I solved during this project reinforced the importance of persistence and adaptability, skills that will undoubtedly serve me well in future projects.
+
+Time Management Skills
+Completing this game on a fixed timeline required careful planning and prioritization. Early in the project, I underestimated the time required for certain tasks, such as debugging AI behavior or tweaking animations. However, as the project progressed, I learned to break tasks into smaller, more manageable steps and allocate time accordingly.
+
+Prioritization: I learned to distinguish between core features and optional additions, focusing my efforts on the systems that would have the most significant impact on gameplay. For example, while I initially wanted to include additional enemy types and spell variations, I decided to perfect the skeleton AI and core magic combat system instead.
+
+Task Tracking: Using tools like Trello or simple to-do lists, I kept track of progress and deadlines. This helped me stay organized and avoid being overwhelmed by the scope of the project.
+
+By the end of the project, my time management skills had improved significantly, allowing me to deliver a polished and complete game within the available timeframe.
+
+Creating a Compelling Game
+The systems I developed came together to create an engaging and immersive gameplay experience, making this project the first game I am truly proud of. The AI behavior, magic combat system, and responsive HUD worked in harmony to provide players with a sense of challenge and satisfaction. Here’s how these elements contributed to the game’s overall appeal:
+
+Dynamic and Reactive Gameplay: The behavior tree AI ensured that skeleton enemies felt alive and threatening, constantly pursuing and attacking the player. This added a layer of tension and excitement to the gameplay, as players had to think strategically to survive.
+
+Impactful Combat: The sword tracing system made melee interactions precise and rewarding, while the magic combat system allowed players to unleash visually stunning spells. Together, these elements created a combat experience that was both engaging and satisfying.
+
+Immersive Presentation: The HUD provided real-time feedback on health and stamina, ensuring players remained connected to their character’s status during intense battles. Coupled with the atmospheric visual effects of Niagara Fluids, the game’s presentation elevated its overall quality.
+
+For the first time, I created a game that felt cohesive and enjoyable, from the mechanics to the visuals. Seeing the various systems I implemented come together into a complete and polished product was immensely rewarding.
+
+Reflections on Pride and Future Goals
+This project marked a turning point in my journey as a game developer. Unlike my previous attempts, which often felt incomplete or unpolished, this game represents the culmination of my efforts to create something meaningful. I am proud not only of the technical achievements but also of the growth I experienced along the way.
+
+Moving forward, I aim to build on this foundation by tackling more ambitious projects. Future goals include:
+
+Expanding AI systems to include more complex behaviors, such as teamwork or environmental interactions.
+Enhancing gameplay depth by introducing mechanics like enemy weaknesses, player upgrades, or advanced spellcasting.
+Optimizing performance further to ensure smooth gameplay across a wider range of hardware.
+This project has not only solidified my passion for game development but also provided me with the skills and confidence to pursue larger and more challenging endeavors.
+
+In conclusion, this project was a transformative experience that significantly improved my skills in game development, problem-solving, and time management. The systems I implemented helped create a compelling and immersive game, making it the first project I am genuinely proud of. I look forward to building on this success and continuing to grow as a developer.
+
+##Future Improvements
+As I reflect on the development of this game and its potential, I am excited to explore opportunities for expansion and enhancement. The core systems I have implemented provide a strong foundation, but there are many areas where I can add depth, variety, and complexity to elevate the overall experience. Below are the specific features and improvements I plan to implement in the future:
+
+Enhancements to Magic Combat
+Magic combat is a central aspect of the game, and expanding its functionality can add depth and strategic options for players. Planned improvements include:
+
+New Spells and Abilities:
+
+Introduce a variety of new spells, such as area-of-effect attacks, healing abilities, defensive shields, and elemental magic (e.g., fire, ice, and lightning).
+Each spell could have unique visual effects, cooldowns, and resource costs, encouraging players to experiment with different playstyles.
+Spell Customization:
+
+Allow players to upgrade and modify spells, adding mechanics like increased damage, larger areas of effect, or reduced stamina cost. This would give players a sense of progression and control over their combat abilities.
+Combo Mechanics:
+
+Add a combo system where chaining specific spells together yields powerful effects, rewarding skillful and strategic gameplay.
+Environmental Interactions:
+
+Enable spells to interact with the environment (e.g., setting objects on fire, freezing water, or breaking obstacles). This would make combat more dynamic and immersive.
+Improved Enemy Behavior
+Enhancing enemy AI is critical for creating a more challenging and engaging gameplay experience. Planned upgrades include:
+
+Advanced AI States:
+
+Expand the existing AI behavior tree to include new states such as patrolling, evading, guarding, and retreating.
+Introduce adaptive behavior where enemies respond dynamically to the player’s actions, such as grouping together to flank or retreating when low on health.
+Unique Combat Styles:
+
+Design AI to reflect different combat styles, such as aggressive enemies that rush the player, defensive enemies that block and counterattack, and ranged enemies that keep their distance.
+Enemy Synergy:
+
+Implement cooperative behavior among enemies, such as ranged units providing cover fire for melee attackers or healers buffing other enemies. This would add layers of strategy to encounters.
+New Enemy Types
+Variety in enemy types can greatly enhance the challenge and excitement of the game. Planned additions include:
+
+Elite Enemies:
+
+Introduce stronger, more complex enemies with unique abilities, such as shielded skeletons, mages, or berserkers.
+Boss Fights:
+
+Create boss battles that test the player’s skills and provide memorable, climactic moments. Bosses could feature multi-phase fights with changing attack patterns and vulnerabilities.
+Creature Diversity:
+
+Expand the enemy roster to include non-skeletal creatures, such as ghosts, ghouls, or giant beasts, each with distinct behaviors and attack styles.
+Level Expansion
+Expanding the level design is essential for keeping the game fresh and engaging. Planned improvements include:
+
+New Maps:
+
+Design additional maps with unique themes, such as a haunted forest, ancient ruins, or a fiery volcanic landscape. Each map would feature its own challenges and environmental mechanics.
+Expanded Current Level:
+
+Add hidden areas, shortcuts, and secrets to the existing level to encourage exploration and reward curiosity.
+Dynamic Environments:
+
+Introduce dynamic elements like traps, destructible objects, and environmental hazards that change how players approach combat and navigation.
+Level-Up and Progression System
+Adding a level-up system would give players a sense of progression and ownership over their character’s development. Key features include:
+
+Experience Points (XP) System:
+
+Reward players with XP for defeating enemies and completing objectives. Accumulated XP would allow players to level up and grow stronger.
+Skill Tree:
+
+Introduce a skill tree where players can unlock new abilities or improve existing ones, such as increasing spell damage, reducing cooldowns, or enhancing stamina regeneration.
+Stat Upgrades:
+
+Allow players to allocate points to core stats like health, stamina, or magic power, offering personalized progression.
+Additional Features for Immersion and Gameplay Depth
+Quests and Objectives:
+
+Add side quests or mini-objectives that provide rewards and give players additional reasons to explore the game world.
+Multiplayer or Co-op Mode:
+
+Explore the possibility of adding multiplayer functionality, allowing players to team up against waves of enemies or compete for high scores.
+Achievements and Leaderboards:
+
+Implement an achievement system and leaderboards to encourage replayability and competition among players.
+
 
 ## Bibliography
+Best Practices for Creating and Managing Widgets | UI | Widgets | HUD |  Unreal Engine 5 Tutorial (2023) At: https://www.youtube.com/watch?v=7b7a20j0azc (Accessed  30/11/2024).
+Unreal Engine 5 Tutorial -  Animation Blueprint Part 1: State Machines (2023) At: https://www.youtube.com/watch?v=etRZu5UG_S0 (Accessed  30/11/2024).
+Unreal Engine 5 RPG Tutorial Series - #10: Sword Trace Damage and Hit Reactions (2023) At: https://www.youtube.com/watch?v=zbbWk851IXk (Accessed  30/11/2024).
+Unreal Engine 5 Tutorial - Animation Notifies (2022) At: https://www.youtube.com/watch?v=2Su20IGg0tw (Accessed  30/11/2024).
+Niagara Fluids Smoke Portal VFX Tutorial in Unreal Engine 5.3 | Real-Time Simulation | RedefineFX (2024) At: https://www.youtube.com/watch?v=nOirmGz8YG4 (Accessed  30/11/2024).
+Smart Enemy AI | (Part 1: Behavior Trees) | Tutorial in Unreal Engine 5 (UE5) (2023) At: https://www.youtube.com/watch?v=-t3PbGRazKg (Accessed  30/11/2024).
 
 
 
