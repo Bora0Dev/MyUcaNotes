@@ -100,15 +100,25 @@ ChatGPT (s.d.) At: https://chatgpt.com (Accessed  10/10/2024).
 ## Declared Assets
 
 Modular Asian Medieval City | Fab (s.d.) At: https://www.fab.com/listings/cebef7c2-a093-42e0-a3ce-dcd7c06317da (Accessed  30/11/2024).
+-
 Mixamo (s.d.) At: https://www.mixamo.com/#/ (Accessed  10/10/2024).
+-
 Browse Fonts (s.d.) At: https://fonts.google.com/ (Accessed  10/11/2024).
+-
 Free Sound Effect Categories (s.d.) At: https://www.zapsplat.com/sound-effect-categories/ (Accessed  26/10/2024).
+-
 shield guard | Royalty-free Music (s.d.) At: https://pixabay.com/sound-effects/shield-guard-6963/ (Accessed  30/11/2024).
+-
 Mega Magic VFX Bundle (s.d.) At: https://www.fab.com/listings/d0b1351a-acbf-4da6-ab4e-32fc934a255f (Accessed  30/11/2024).
+-
 Leonardo.Ai (s.d.) At: https://app.leonardo.ai/?via=jaji&gad_source=1&gclid=CjwKCAiAjKu6BhAMEiwAx4UsAvZnWnDyodT23t-nH01L45UJk3sCPQny-1QNPNjih50xCKXc4jwnyBoC48EQAvD_BwE (Accessed  30/11/2024).
+-
 Jacquard 24 (s.d.) At: https://fonts.google.com/specimen/Jacquard+24 (Accessed  30/11/2024).
+-
 Money free icon designed by Umeicon (s.d.) At: https://www.flaticon.com/free-icon/money_2806415?term=coin&page=2&position=90&origin=search&related_id=2806415 (Accessed  30/11/2024).
+-
 Fire free icon designed by Freepik (s.d.) At: https://www.flaticon.com/free-icon/fire_785116?term=fire&page=1&position=1&origin=search&related_id=785116 (Accessed  30/11/2024).
+-
 
 
 
