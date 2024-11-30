@@ -293,11 +293,17 @@ Implement an achievement system and leaderboards to encourage replayability and 
 
 ## Bibliography
 Best Practices for Creating and Managing Widgets | UI | Widgets | HUD |  Unreal Engine 5 Tutorial (2023) At: https://www.youtube.com/watch?v=7b7a20j0azc (Accessed  30/11/2024).
+-
 Unreal Engine 5 Tutorial -  Animation Blueprint Part 1: State Machines (2023) At: https://www.youtube.com/watch?v=etRZu5UG_S0 (Accessed  30/11/2024).
+-
 Unreal Engine 5 RPG Tutorial Series - #10: Sword Trace Damage and Hit Reactions (2023) At: https://www.youtube.com/watch?v=zbbWk851IXk (Accessed  30/11/2024).
+-
 Unreal Engine 5 Tutorial - Animation Notifies (2022) At: https://www.youtube.com/watch?v=2Su20IGg0tw (Accessed  30/11/2024).
+-
 Niagara Fluids Smoke Portal VFX Tutorial in Unreal Engine 5.3 | Real-Time Simulation | RedefineFX (2024) At: https://www.youtube.com/watch?v=nOirmGz8YG4 (Accessed  30/11/2024).
+-
 Smart Enemy AI | (Part 1: Behavior Trees) | Tutorial in Unreal Engine 5 (UE5) (2023) At: https://www.youtube.com/watch?v=-t3PbGRazKg (Accessed  30/11/2024).
+-
 
 
 
