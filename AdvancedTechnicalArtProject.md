@@ -154,10 +154,13 @@ Fine-tuning the game for better performance across different hardware configurat
 Conclusion
 In summary, the outcome of this project is multifaceted. Not only did I create a functional, enjoyable, and visually impressive game, but I also grew significantly as a developer. The systems I implemented—ranging from AI behavior to combat mechanics—came together to deliver a cohesive and compelling player experience. More importantly, this project has laid a strong foundation for my future as a game developer, equipping me with the skills, confidence, and ambition to push boundaries and create even more exciting projects.
 
-#Links
+##Links
 https://github.com/Bora0Dev/Undead_Monk
+-
 https://bora0dev.itch.io/undead-monk
+-
 https://github.com/Bora0Dev/UndeadMonkBuild
+-
 
 ## Critical Reflection
 Embarking on this Unreal Engine 5 project has been a transformative experience, marking a significant milestone in my journey as a game developer. As the first game I am genuinely proud of, it challenged me to grow in various aspects, including technical skills, problem-solving abilities, and time management. This reflection delves into the personal and professional growth I achieved through this project and how the systems I developed contributed to crafting a compelling game.
