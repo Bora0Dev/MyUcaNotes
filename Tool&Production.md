@@ -16,6 +16,11 @@ Ultimately, Last Drop is a game that emphasizes creativity, strategic thinking, 
 Last Drop is a 3D side-scrolling puzzle platformer that revolves around a unique mechanic where the player controls a character with a bubble attached to their head. This bubble reacts to different surfaces in the environment, changing states based on the surface the player interacts with. The game is set across four distinct seasonal levels—Spring, Summer, Autumn, and Winter—each introducing its own set of mechanics and challenges. Players must solve puzzles by manipulating the bubble and using the environmental effects, all while navigating through intricate level designs. The game also focuses on performance optimization using material-based state changes rather than relying heavily on particle effects.
 
 ## Core Gameplay
+
+```cpp
+cout << "hello!";
+```
+
 The core mechanic in Last Drop revolves around a bubble that is attached to the player's character. The bubble's behavior changes when it interacts with various surfaces, and the player must manipulate the environment to use these interactions to solve puzzles and progress through the game. The bubble can enter different states, which are determined by the environmental surface it comes in contact with. These states include Oil, Fire, and the states tied to each of the four seasons: Spring, Summer, Autumn, and Winter.
 
 ## Level Design
