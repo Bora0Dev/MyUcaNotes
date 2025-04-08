@@ -2,6 +2,8 @@
 # Project Outline (Suggested Word Count 500)
 Last Drop is a 3D side-scrolling puzzle platformer that revolves around a unique mechanic where the player controls a character with a bubble attached to their head. This bubble reacts to different surfaces in the environment, changing states based on the surface the player interacts with. The game is set across four distinct seasonal levels—Spring, Summer, Autumn, and Winter—each introducing its own set of mechanics and challenges. Players must solve puzzles by manipulating the bubble and using the environmental effects, all while navigating through intricate level designs. The game also focuses on performance optimization using material-based state changes rather than relying heavily on particle effects.
 
+
+###Identify any anticipated challenges or potential issues that may arise during development.
 ## Core Gameplay
 
 The core mechanic in Last Drop revolves around a bubble that is attached to the player's character. The bubble's behavior changes when it interacts with various surfaces, and the player must manipulate the environment to use these interactions to solve puzzles and progress through the game. The bubble can enter different states, which are determined by the environmental surface it comes in contact with. These states include Oil, Fire, and the states tied to each of the four seasons: Spring, Summer, Autumn, and Winter.
@@ -12,15 +14,8 @@ To optimize performance and ensure smooth gameplay, Last Drop uses materials ins
 # Research 
 
 ## Methodology
-In The Last Drop, a side-scrolling puzzle game built in Unreal Engine 5, I developed a save system to store and load the player’s transform (position and rotation) and camera rotation, inspired by Tom Looman’s “Unreal Engine C++ Save System (SaveGame)”(Looman, 2021). This system ensures players resume from their last saved position, enhancing puzzle continuity.
-
-Following Looman’s methodology, I created a SaveGameData class derived from USaveGame in C++ to manage save data. I defined a struct, FPlayerData, to hold the player’s FTransform (position, rotation, scale) and camera rotation as an FRotator, mirroring Looman’s approach of structuring data for serialization. In SaveGameData, I added a FPlayerData property marked with UPROPERTY(SaveGame) for Unreal’s binary serialization. I also created an interface, ISaveSystem, with functions like SaveGameData(), LoadGameData(), GetGameData(), and SavePlayer(), providing a blueprint for save/load operations.
-
-I implemented this interface in a custom Game Instance, centralizing save logic as Looman suggests for persistent game-wide access. In the Game Instance, SavePlayer() captures the player’s transform and camera rotation (via GetPlayerSave() in BP_BodyChar), stores them in FPlayerData, and saves to “Slot1” using UGameplayStatics::SaveGameToSlot. LoadGameData() checks if “Slot1” exists with DoesSaveGameExist(); if not, it initializes a new SaveGameData instance, and if it does, it loads the data with LoadGameFromSlot, applying it via UsePlayerSave() in BP_BodyChar. In BP_BodyChar, GetPlayerSave() retrieves the current transform and control rotation, while UsePlayerSave(), called on BeginPlay, sets the character’s transform and rotation from the loaded data.
-
-For triggering saves, I created a Checkpoint Actor with a Trigger Box. On player overlap, it calls SavePlayer() through the Game Instance, storing the current transform and rotation to “Slot1”. This checkpoint system ensures progress is saved at key points, inspired by Looman’s practical examples of event-driven saves.
-
-Looman’s influence shaped my implementation significantly. His tutorial’s use of USaveGame and UPROPERTY(SaveGame) directly informed my SaveGameData class and FPlayerData struct, adapting his C++ concepts to my mixed C++/Blueprint workflow. His emphasis on clean, reusable save logic guided my interface design and Game Instance setup, ensuring modularity. The idea of saving critical data like position—seen in Looman’s player position example—led me to prioritize the transform and camera rotation, vital for The Last Drop’s puzzle navigation. His versioning advice also influenced me to structure SaveGameData for future additions (e.g., player stats), though not yet implemented. Looman’s clear, structured approach gave me the confidence to blend C++ and Blueprints effectively, creating a robust save system tailored to my game’s needs.
+Investigate relevant documentation, tutorials, or instructional videos that provide technical insights into your tasks. Summarise the content and its relevance to your project.
+Explain how this technical knowledge supports your project work and guides your decision-making process.
 ## Game Sources
 
 Portal 2 introduces new mechanics, such as gels and light bridges, to evolve the portal system as the game progresses. In a similar vein, Last Drop introduces seasonal changes, each with its own set of surface types that affect the bubble's behavior. For example, in the Winter level, the bubble might slide across icy surfaces, while in Autumn, Sap creates platforms for the player to jump on. These mechanics keep the gameplay fresh, much like how Portal 2 introduces new puzzle elements to challenge players. (Mechanics, Depth, and Portal 2, s.d.)
@@ -33,7 +28,15 @@ The academic sources I consulted were largely centered around game mechanics and
 
 Additionally, Unreal Engine’s documentation was heavily referenced in understanding the technical side of the save system, particularly when dealing with object serialization and managing persistent game data. This knowledge was crucial in designing the game’s save/load functionality, ensuring a robust and flexible save system for player progression.
 ## Documentation Sources
+In The Last Drop, a side-scrolling puzzle game built in Unreal Engine 5, I developed a save system to store and load the player’s transform (position and rotation) and camera rotation, inspired by Tom Looman’s “Unreal Engine C++ Save System (SaveGame)”(Looman, 2021). This system ensures players resume from their last saved position, enhancing puzzle continuity.
 
+Following Looman’s methodology, I created a SaveGameData class derived from USaveGame in C++ to manage save data. I defined a struct, FPlayerData, to hold the player’s FTransform (position, rotation, scale) and camera rotation as an FRotator, mirroring Looman’s approach of structuring data for serialization. In SaveGameData, I added a FPlayerData property marked with UPROPERTY(SaveGame) for Unreal’s binary serialization. I also created an interface, ISaveSystem, with functions like SaveGameData(), LoadGameData(), GetGameData(), and SavePlayer(), providing a blueprint for save/load operations.
+
+I implemented this interface in a custom Game Instance, centralizing save logic as Looman suggests for persistent game-wide access. In the Game Instance, SavePlayer() captures the player’s transform and camera rotation (via GetPlayerSave() in BP_BodyChar), stores them in FPlayerData, and saves to “Slot1” using UGameplayStatics::SaveGameToSlot. LoadGameData() checks if “Slot1” exists with DoesSaveGameExist(); if not, it initializes a new SaveGameData instance, and if it does, it loads the data with LoadGameFromSlot, applying it via UsePlayerSave() in BP_BodyChar. In BP_BodyChar, GetPlayerSave() retrieves the current transform and control rotation, while UsePlayerSave(), called on BeginPlay, sets the character’s transform and rotation from the loaded data.
+
+For triggering saves, I created a Checkpoint Actor with a Trigger Box. On player overlap, it calls SavePlayer() through the Game Instance, storing the current transform and rotation to “Slot1”. This checkpoint system ensures progress is saved at key points, inspired by Looman’s practical examples of event-driven saves.
+
+Looman’s influence shaped my implementation significantly. His tutorial’s use of USaveGame and UPROPERTY(SaveGame) directly informed my SaveGameData class and FPlayerData struct, adapting his C++ concepts to my mixed C++/Blueprint workflow. His emphasis on clean, reusable save logic guided my interface design and Game Instance setup, ensuring modularity. The idea of saving critical data like position—seen in Looman’s player position example—led me to prioritize the transform and camera rotation, vital for The Last Drop’s puzzle navigation. His versioning advice also influenced me to structure SaveGameData for future additions (e.g., player stats), though not yet implemented. Looman’s clear, structured approach gave me the confidence to blend C++ and Blueprints effectively, creating a robust save system tailored to my game’s needs.
 ### Actor Components
 In Unreal Engine, Actor Components are modular pieces of functionality that can be attached to any Actor to extend its behavior without requiring inheritance. This system promotes clean, reusable code by allowing developers to compose behaviors in a flexible, object-oriented way. Unlike traditional class-based design, where all behaviors are defined directly in the Actor or its subclasses, components allow you to separate concerns—for example, handling movement, input, or surface detection—in self-contained modules. (Components in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community, s.d.)
 
@@ -146,13 +149,13 @@ Lastly, I would improve the visual feedback for state interactions, using enviro
 
 In conclusion, the development of The Last Drop was a rewarding learning experience, offering both technical challenges and creative opportunities. The insights gained will be valuable for future projects, and I look forward to applying these lessons moving forward.
 # Bibliography
-## Looman, T. (2021) Unreal Engine C++ Save System (SaveGame). At: https://www.tomlooman.com/unreal-engine-cpp-save-system/ (Accessed  07/04/2025).
-## Sphere Trace By Channel | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/BlueprintAPI/Collision/SphereTraceByChannel (Accessed  06/04/2025).
-## How to Create material using C++ and apply it to static mesh? - Development / Rendering (2019) At: https://forums.unrealengine.com/t/how-to-create-material-using-c-and-apply-it-to-static-mesh/445061 (Accessed  06/04/2025).
-## The ultimate guide | How to Save & Load your unreal engine 5 game | ue5 (2024) At: https://www.youtube.com/watch?v=H6rqJbwjRIk (Accessed  08/02/2025).
-## Mechanics, Depth, and Portal 2 (s.d.) At: https://www.gamedeveloper.com/business/mechanics-depth-and-portal-2 (Accessed  06/04/2025).
-## Components in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/components-in-unreal-engine (Accessed  06/04/2025).
-## Sicart, M. (2008) 'Defining Game Mechanics' In: Game Studies 8 (2) At: https://gamestudies.org/0802/articles/sicart (Accessed  07/04/2025).
+ Looman, T. (2021) Unreal Engine C++ Save System (SaveGame). At: https://www.tomlooman.com/unreal-engine-cpp-save-system/ (Accessed  07/04/2025).
+ Sphere Trace By Channel | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/BlueprintAPI/Collision/SphereTraceByChannel (Accessed  06/04/2025).
+ How to Create material using C++ and apply it to static mesh? - Development / Rendering (2019) At: https://forums.unrealengine.com/t/how-to-create-material-using-c-and-apply-it-to-static-mesh/445061 (Accessed  06/04/2025).
+ The ultimate guide | How to Save & Load your unreal engine 5 game | ue5 (2024) At: https://www.youtube.com/watch?v=H6rqJbwjRIk (Accessed  08/02/2025).
+ Mechanics, Depth, and Portal 2 (s.d.) At: https://www.gamedeveloper.com/business/mechanics-depth-and-portal-2 (Accessed  06/04/2025).
+ Components in Unreal Engine | Unreal Engine 5.5 Documentation | Epic Developer Community (s.d.) At: https://dev.epicgames.com/documentation/en-us/unreal-engine/components-in-unreal-engine (Accessed  06/04/2025).
+ Sicart, M. (2008) 'Defining Game Mechanics' In: Game Studies 8 (2) At: https://gamestudies.org/0802/articles/sicart (Accessed  07/04/2025).
 
 
 
